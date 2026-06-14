@@ -648,57 +648,6 @@ const WhatToExpect = () => {
   );
 };
 
-const ConsultationCallout = () => {
-  return (
-    <section id="consultation-callout" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 blueprint-grid opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
-      <div className="container mx-auto px-4 max-w-4xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-5xl font-serif mb-6">When to Contact a Construction Consultant</h2>
-          <p className="text-lg text-primary-foreground/80 mb-12">
-            A construction consultation may be useful when any of the following applies to the project:
-          </p>
-
-          <ul className="space-y-6 mb-12 pl-6 border-l-2 border-accent">
-            <li className="text-primary-foreground/90 leading-relaxed">
-              <span className="text-accent font-bold mr-2">—</span> The project idea is still in early development and requires professional input to move forward.
-            </li>
-            <li className="text-primary-foreground/90 leading-relaxed">
-              <span className="text-accent font-bold mr-2">—</span> The homeowner is uncertain about the likely scope, cost range, or construction requirements.
-            </li>
-            <li className="text-primary-foreground/90 leading-relaxed">
-              <span className="text-accent font-bold mr-2">—</span> Multiple construction stages may require coordination across different trades or timelines.
-            </li>
-            <li className="text-primary-foreground/90 leading-relaxed">
-              <span className="text-accent font-bold mr-2">—</span> The property has existing conditions that require assessment before planning begins.
-            </li>
-            <li className="text-primary-foreground/90 leading-relaxed">
-              <span className="text-accent font-bold mr-2">—</span> The homeowner wants to understand what the next step would involve before committing to a full project.
-            </li>
-          </ul>
-
-          <p className="text-xs text-primary-foreground/50 italic mb-10 border-t border-primary-foreground/10 pt-6">
-            AJS Construction Corp. does not provide architectural, engineering, permit approval, or legal services. Contact the company to confirm whether consultation services apply to the specific project.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="rounded-none bg-accent hover:bg-accent/90 text-primary-foreground px-8">
-              <a href="#contact">Request a Consultation <ArrowRight className="w-4 h-4 ml-2" /></a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-none border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="tel:+15165819706">Call (516) 581 9706</a>
-            </Button>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
@@ -1207,7 +1156,6 @@ export default function Home() {
         <ProjectsWorthDiscussing />
         <Showcase />
         <WhatToExpect />
-        <ConsultationCallout />
         <ContactForm />
         <FAQ />
         <Location />
