@@ -373,55 +373,46 @@ const Services = () => {
 
 const Planning = () => {
   const topics = [
-    { title: "Property Location", desc: "The specific address and site conditions help establish what the project involves and whether local considerations apply." },
-    { title: "General Project Goals", desc: "A clear description of the intended outcome, even in general terms, helps focus the first conversation." },
-    { title: "Existing Property Conditions", desc: "Notes on the current state of the property, any existing construction, and what would need to change." },
-    { title: "Desired Timeline", desc: "A general sense of when the project should begin or be completed helps with initial planning discussions." },
-    { title: "Approximate Budget Expectations", desc: "A rough budget range, even if uncertain, helps identify whether a project is at the right stage for active planning." },
-    { title: "Design or Drawing Availability", desc: "Whether preliminary drawings, sketches, or design plans exist affects how quickly a scope can be discussed." },
-    { title: "Permit Status When Known", desc: "Understanding whether permits have been considered, applied for, or approved is useful early in the conversation." }
+    { num: "01", title: "Property and Project Overview", desc: "Prepare the property address, current conditions, and a short explanation of what you want to build, remodel, or improve." },
+    { num: "02", title: "Goals and Priorities", desc: "Identify the main result you want from the project, the most important features, and any major concerns." },
+    { num: "03", title: "Timeline and Budget", desc: "Share your preferred timeline and an approximate budget range so the initial conversation can remain practical." },
+    { num: "04", title: "Plans and Permit Status", desc: "Mention whether drawings, sketches, architectural plans, or permit information already exist." },
   ];
 
   return (
     <section id="planning" className="py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <motion.div 
-          className="mb-16 md:mb-24"
+      <div className="container mx-auto px-4 max-w-6xl">
+        <motion.div
+          className="mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Planning a Residential Construction Project</h2>
-          <p className="text-primary/70 text-lg leading-relaxed max-w-3xl">
-            Homeowners who prepare the following information before their first contractor conversation tend to have more productive discussions and clearer next steps.
+          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-5">Planning a Residential Construction Project</h2>
+          <p className="text-primary/70 text-lg max-w-2xl">
+            A few basic details can make your first project conversation more focused and productive.
           </p>
         </motion.div>
 
-        <div className="space-y-12 md:space-y-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {topics.map((topic, idx) => (
-            <motion.div 
-              key={idx} 
-              className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start border-t border-border pt-8"
+            <motion.div
+              key={idx}
+              className="border-t-2 border-accent pt-6 flex flex-col gap-3"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
+              transition={{ delay: idx * 0.08 }}
             >
-              <div className="md:col-span-1 text-2xl font-serif text-accent font-bold opacity-50">
-                {(idx + 1).toString().padStart(2, '0')}
-              </div>
-              <div className="md:col-span-4">
-                <h3 className="text-xl font-serif font-bold text-primary">{topic.title}</h3>
-              </div>
-              <div className="md:col-span-7">
-                <p className="text-primary/70 leading-relaxed">{topic.desc}</p>
-              </div>
+              <span className="text-2xl font-serif text-accent font-bold opacity-50 leading-none">{topic.num}</span>
+              <h3 className="text-lg font-serif font-bold text-primary leading-snug">{topic.title}</h3>
+              <p className="text-primary/70 text-sm leading-relaxed">{topic.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        <motion.div 
-          className="mt-16 pt-12 border-t border-border flex flex-col sm:flex-row gap-4"
+        <motion.div
+          className="mt-12 pt-10 border-t border-border flex flex-col sm:flex-row gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
