@@ -191,54 +191,248 @@ const Services = () => {
   return (
     <section id="services" className="py-24 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mb-16">
+        <motion.div 
+          className="max-w-3xl mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Structured Services for Residential Projects</h2>
           <div className="w-16 h-[2px] bg-accent"></div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
           {/* Service 1 - With Image */}
-          <div className="group relative overflow-hidden bg-background p-8 border border-border/50">
-            <div className="h-48 mb-8 overflow-hidden relative">
-              <img src="/src/assets/images/service-1.png" alt="New Home Construction" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <motion.div 
+            className="group relative overflow-hidden bg-background p-8 border border-border/50 flex flex-col h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="h-48 mb-8 overflow-hidden relative shrink-0">
+              <img src="/src/assets/images/service-1.png" alt="New Home Construction" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             </div>
             <h3 className="text-xl font-serif font-bold text-primary mb-4 flex items-center justify-between">
               New Home Construction
               <ArrowRight className="w-5 h-5 text-accent opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
             </h3>
-            <p className="text-primary/70 leading-relaxed text-sm">
+            <p className="text-primary/70 leading-relaxed text-sm mb-6 flex-grow">
               Discuss residential home building goals, property requirements, project scope, and the next stages required to move the project forward.
             </p>
-          </div>
+            <div className="space-y-4 text-sm mt-auto">
+              <div>
+                <p className="font-bold text-primary mb-2">Typical considerations:</p>
+                <ul className="space-y-1 text-primary/70">
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Lot size and zoning</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Square footage goals</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Architectural style</li>
+                </ul>
+              </div>
+              <div className="pt-4 border-t border-border/50">
+                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
+                <p className="text-primary/70 italic text-xs">Timeline, general scope, location</p>
+              </div>
+              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-1-cta">
+                Start the Conversation <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
 
           {/* Service 2 */}
-          <div className="bg-primary text-primary-foreground p-8 md:p-12 flex flex-col justify-center">
+          <motion.div 
+            className="bg-primary text-primary-foreground p-8 md:p-12 flex flex-col h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             <h3 className="text-2xl font-serif font-bold mb-4">General Contracting</h3>
-            <p className="text-primary-foreground/80 leading-relaxed text-sm">
+            <p className="text-primary-foreground/80 leading-relaxed text-sm mb-8 flex-grow">
               Coordinate residential construction work through organized planning, communication, scheduling, and project execution.
             </p>
-          </div>
+            <div className="space-y-4 text-sm mt-auto">
+              <div>
+                <p className="font-bold text-primary-foreground mb-2">Typical considerations:</p>
+                <ul className="space-y-1 text-primary-foreground/70">
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Multiple trades scheduling</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Material procurement</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Site management</li>
+                </ul>
+              </div>
+              <div className="pt-4 border-t border-primary-foreground/20">
+                <p className="font-medium text-primary-foreground mb-1">What to discuss on the first call:</p>
+                <p className="text-primary-foreground/70 italic text-xs">Project scale, existing conditions, budget range</p>
+              </div>
+              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-2-cta">
+                Start the Conversation <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
 
           {/* Service 3 */}
-          <div className="bg-background p-8 md:p-12 border border-border flex flex-col justify-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 blueprint-grid opacity-20 transform rotate-45 translate-x-16 -translate-y-16"></div>
+          <motion.div 
+            className="bg-background p-8 md:p-12 border border-border flex flex-col relative overflow-hidden h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 blueprint-grid opacity-20 transform rotate-45 translate-x-16 -translate-y-16 pointer-events-none"></div>
             <h3 className="text-2xl font-serif font-bold text-primary mb-4 relative z-10">Bathroom Remodeling</h3>
-            <p className="text-primary/70 leading-relaxed text-sm relative z-10">
+            <p className="text-primary/70 leading-relaxed text-sm relative z-10 mb-8 flex-grow">
               Plan and build a more functional bathroom space through coordinated construction, fixture placement, surface work, and finishing details.
             </p>
-          </div>
+            <div className="space-y-4 text-sm mt-auto relative z-10">
+              <div>
+                <p className="font-bold text-primary mb-2">Typical considerations:</p>
+                <ul className="space-y-1 text-primary/70">
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Plumbing relocation</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Custom tile work</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Fixture upgrades</li>
+                </ul>
+              </div>
+              <div className="pt-4 border-t border-border/50">
+                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
+                <p className="text-primary/70 italic text-xs">Current layout, desired changes, timeline</p>
+              </div>
+              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-3-cta">
+                Start the Conversation <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
 
           {/* Service 4 */}
-          <div className="bg-background p-8 border border-border border-l-4 border-l-accent flex flex-col justify-center">
+          <motion.div 
+            className="bg-background p-8 border border-border border-l-4 border-l-accent flex flex-col h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             <h3 className="text-xl font-serif font-bold text-primary mb-4">Construction Consultation</h3>
-            <p className="text-primary/70 leading-relaxed text-sm mb-6">
+            <p className="text-primary/70 leading-relaxed text-sm mb-8 flex-grow">
               Speak directly with the company about the property, project goals, construction considerations, and possible next steps.
             </p>
-            <a href="#contact" className="text-sm font-bold text-accent uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all w-fit">
-              Request Consultation <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+            <div className="space-y-4 text-sm mt-auto">
+              <div>
+                <p className="font-bold text-primary mb-2">Typical considerations:</p>
+                <ul className="space-y-1 text-primary/70">
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Feasibility of ideas</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Constructability reviews</li>
+                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Sequencing strategies</li>
+                </ul>
+              </div>
+              <div className="pt-4 border-t border-border/50">
+                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
+                <p className="text-primary/70 italic text-xs">Property address, current planning stage, specific concerns</p>
+              </div>
+              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-4-cta">
+                Start the Conversation <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </motion.div>
         </div>
+
+        {/* 2 NEW lighter-weight service tiles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div 
+            className="bg-background/50 border border-border p-6 flex flex-col h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="mb-3">
+              <span className="text-[0.65rem] uppercase tracking-widest text-muted border border-border px-2 py-1">Discussion Category</span>
+            </div>
+            <h4 className="text-lg font-serif font-bold text-primary mb-3">Residential Improvements</h4>
+            <p className="text-sm text-primary/70 leading-relaxed">
+              Residential improvement projects may involve coordinated construction work across multiple areas. Discuss the property condition, intended changes, and project priorities to determine possible next steps.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            className="bg-background/50 border border-border p-6 flex flex-col h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <div className="mb-3">
+              <span className="text-[0.65rem] uppercase tracking-widest text-muted border border-border px-2 py-1">Discussion Category</span>
+            </div>
+            <h4 className="text-lg font-serif font-bold text-primary mb-3">Project Planning Support</h4>
+            <p className="text-sm text-primary/70 leading-relaxed">
+              Early-stage projects often benefit from an organized conversation about scope, property conditions, and construction sequencing. Contact the company to begin a focused planning discussion.
+            </p>
+          </motion.div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+const Planning = () => {
+  const topics = [
+    { title: "Property Location", desc: "The specific address and site conditions help establish what the project involves and whether local considerations apply." },
+    { title: "General Project Goals", desc: "A clear description of the intended outcome, even in general terms, helps focus the first conversation." },
+    { title: "Existing Property Conditions", desc: "Notes on the current state of the property, any existing construction, and what would need to change." },
+    { title: "Desired Timeline", desc: "A general sense of when the project should begin or be completed helps with initial planning discussions." },
+    { title: "Approximate Budget Expectations", desc: "A rough budget range, even if uncertain, helps identify whether a project is at the right stage for active planning." },
+    { title: "Design or Drawing Availability", desc: "Whether preliminary drawings, sketches, or design plans exist affects how quickly a scope can be discussed." },
+    { title: "Permit Status When Known", desc: "Understanding whether permits have been considered, applied for, or approved is useful early in the conversation." }
+  ];
+
+  return (
+    <section id="planning" className="py-24 bg-background">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <motion.div 
+          className="mb-16 md:mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Planning a Residential Construction Project</h2>
+          <p className="text-primary/70 text-lg leading-relaxed max-w-3xl">
+            Homeowners who prepare the following information before their first contractor conversation tend to have more productive discussions and clearer next steps.
+          </p>
+        </motion.div>
+
+        <div className="space-y-12 md:space-y-16">
+          {topics.map((topic, idx) => (
+            <motion.div 
+              key={idx} 
+              className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start border-t border-border pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+            >
+              <div className="md:col-span-1 text-2xl font-serif text-accent font-bold opacity-50">
+                {(idx + 1).toString().padStart(2, '0')}
+              </div>
+              <div className="md:col-span-4">
+                <h3 className="text-xl font-serif font-bold text-primary">{topic.title}</h3>
+              </div>
+              <div className="md:col-span-7">
+                <p className="text-primary/70 leading-relaxed">{topic.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div 
+          className="mt-16 pt-12 border-t border-border flex flex-col sm:flex-row gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Button asChild size="lg" className="rounded-none bg-primary hover:bg-primary/90 text-primary-foreground px-8">
+            <a href="#contact">Discuss Your Project <ArrowRight className="w-4 h-4 ml-2" /></a>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="rounded-none border-primary text-primary hover:bg-secondary">
+            <a href="tel:+15165819706">Call (516) 581 9706</a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
@@ -252,7 +446,12 @@ const AboutAndProcess = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           
           {/* About */}
-          <div id="about">
+          <motion.div 
+            id="about"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-5xl font-serif text-primary mb-8 leading-tight">
               Residential Construction With a Direct Approach
             </h2>
@@ -268,10 +467,15 @@ const AboutAndProcess = () => {
                 <p className="text-primary/70">141 E Cabot Ln<br/>Westbury, NY 11590</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Process */}
-          <div id="process">
+          <motion.div 
+            id="process"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <div className="flex items-center gap-4 mb-12">
               <div className="w-8 h-[1px] bg-accent"></div>
               <span className="text-sm font-medium tracking-widest uppercase text-muted">Approach</span>
@@ -279,10 +483,11 @@ const AboutAndProcess = () => {
             
             <div className="space-y-8">
               {[
-                { num: "01", title: "Initial Conversation", desc: "Discuss the property, intended project, priorities, and current project stage." },
-                { num: "02", title: "Project Review", desc: "Review the expected scope, site considerations, design needs, and construction requirements." },
-                { num: "03", title: "Planning and Coordination", desc: "Clarify the proposed work, scheduling considerations, responsibilities, and next steps." },
-                { num: "04", title: "Construction", desc: "Move through the approved construction scope with organized communication and project coordination." }
+                { num: "01", title: "Initial Project Conversation", desc: "Discuss the property address, intended project type, general goals, and current planning stage to determine whether AJS Construction Corp. is the right fit." },
+                { num: "02", title: "Property and Scope Review", desc: "Review the physical site, existing conditions, general design direction, and what the construction work is likely to involve." },
+                { num: "03", title: "Planning and Coordination", desc: "Clarify the proposed scope of work, discuss scheduling considerations, define responsibilities, and establish a clear set of next steps." },
+                { num: "04", title: "Construction Execution", desc: "Move through the approved construction scope with organized site communication, coordination between trades, and progress documentation." },
+                { num: "05", title: "Project Review and Completion", desc: "Review the completed work against the agreed scope, address any outstanding items, and confirm the project is ready to close." }
               ].map((step, idx) => (
                 <div key={idx} className="flex gap-6">
                   <div className="text-3xl font-serif text-accent font-bold opacity-50 pt-1">{step.num}</div>
@@ -293,8 +498,53 @@ const AboutAndProcess = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectsWorthDiscussing = () => {
+  const projects = [
+    { title: "Building a New Home", desc: "Property owners considering new residential construction can discuss the site, intended home size, general design direction, and the stages required to move the project toward active planning." },
+    { title: "Managing a Residential Renovation", desc: "Renovation projects involving multiple construction areas may benefit from coordinated general contracting. Discuss the property, intended scope, and construction phasing." },
+    { title: "Updating a Bathroom", desc: "Bathroom remodeling projects can range from targeted fixture updates to full spatial redesigns. Discuss the current layout, desired changes, and available timeline." },
+    { title: "Reviewing an Early Construction Idea", desc: "Early-stage ideas benefit from a direct conversation about feasibility, scope, and possible next steps before committing to a full project plan." }
+  ];
+
+  return (
+    <section id="project-types" className="py-24 bg-primary text-primary-foreground">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-5xl font-serif mb-6">Projects Worth Discussing</h2>
+          <p className="text-primary-foreground/70 text-lg">Exact scope and availability must be confirmed directly with AJS Construction Corp.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {projects.map((project, idx) => (
+            <motion.div 
+              key={idx} 
+              className="bg-primary-foreground/5 p-8 border border-primary-foreground/10 flex flex-col h-full hover:bg-primary-foreground/10 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="text-4xl font-serif text-accent mb-6 font-bold">{(idx + 1).toString().padStart(2, '0')}</div>
+              <h3 className="text-xl font-serif font-bold mb-4">{project.title}</h3>
+              <p className="text-primary-foreground/70 text-sm leading-relaxed mb-8 flex-grow">{project.desc}</p>
+              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all mt-auto" data-testid={`link-project-discuss-${idx}`}>
+                Discuss This Project <ArrowRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -314,7 +564,12 @@ const Showcase = () => {
   return (
     <section id="work" className="py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <motion.div 
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <div>
             <h2 className="text-3xl md:text-5xl font-serif mb-4">Residential Construction Possibilities</h2>
             <div className="w-16 h-[2px] bg-accent"></div>
@@ -322,20 +577,123 @@ const Showcase = () => {
           <p className="text-sm text-primary-foreground/50 max-w-xs border-l border-primary-foreground/20 pl-4 italic">
             Images are representative design placeholders and do not show confirmed AJS Construction Corp. projects.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {images.map((img, i) => (
-            <div key={i} className="aspect-square relative overflow-hidden group">
+            <motion.div 
+              key={i} 
+              className="aspect-square relative overflow-hidden group"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
               <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
               <img 
                 src={img.src} 
                 alt={img.alt} 
+                loading="lazy"
                 className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+};
+
+const WhatToExpect = () => {
+  const blocks = [
+    { title: "Clear Project Information", desc: "Each conversation focuses on the property and project specifically, rather than general contractor information." },
+    { title: "Property-Specific Discussion", desc: "Site conditions, local considerations, and construction requirements vary by property. Expect a conversation focused on the details that matter for the specific project." },
+    { title: "Defined Next Steps", desc: "After the initial conversation, the goal is a clearer understanding of what the project involves and what the next stage would require." },
+    { title: "Direct Contact", desc: "AJS Construction Corp. can be reached by phone at (516) 581 9706 or through the project inquiry form below." }
+  ];
+
+  return (
+    <section id="what-to-expect" className="py-24 bg-secondary">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">A More Organized Project Conversation</h2>
+          <p className="text-primary/70 text-lg max-w-2xl mx-auto">
+            AJS Construction Corp. aims to give homeowners clear information about their project, property, and possible next steps.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {blocks.map((block, idx) => (
+            <motion.div 
+              key={idx}
+              className="pt-6 border-t-2 border-accent flex flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="text-sm font-bold text-accent mb-4">{(idx + 1).toString().padStart(2, '0')}</div>
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4">{block.title}</h3>
+              <p className="text-primary/80 leading-relaxed">{block.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ConsultationCallout = () => {
+  return (
+    <section id="consultation-callout" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+      <div className="absolute inset-0 blueprint-grid opacity-10 mix-blend-overlay pointer-events-none z-0"></div>
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-5xl font-serif mb-6">When to Contact a Construction Consultant</h2>
+          <p className="text-lg text-primary-foreground/80 mb-12">
+            A construction consultation may be useful when any of the following applies to the project:
+          </p>
+
+          <ul className="space-y-6 mb-12 pl-6 border-l-2 border-accent">
+            <li className="text-primary-foreground/90 leading-relaxed">
+              <span className="text-accent font-bold mr-2">—</span> The project idea is still in early development and requires professional input to move forward.
+            </li>
+            <li className="text-primary-foreground/90 leading-relaxed">
+              <span className="text-accent font-bold mr-2">—</span> The homeowner is uncertain about the likely scope, cost range, or construction requirements.
+            </li>
+            <li className="text-primary-foreground/90 leading-relaxed">
+              <span className="text-accent font-bold mr-2">—</span> Multiple construction stages may require coordination across different trades or timelines.
+            </li>
+            <li className="text-primary-foreground/90 leading-relaxed">
+              <span className="text-accent font-bold mr-2">—</span> The property has existing conditions that require assessment before planning begins.
+            </li>
+            <li className="text-primary-foreground/90 leading-relaxed">
+              <span className="text-accent font-bold mr-2">—</span> The homeowner wants to understand what the next step would involve before committing to a full project.
+            </li>
+          </ul>
+
+          <p className="text-xs text-primary-foreground/50 italic mb-10 border-t border-primary-foreground/10 pt-6">
+            AJS Construction Corp. does not provide architectural, engineering, permit approval, or legal services. Contact the company to confirm whether consultation services apply to the specific project.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button asChild size="lg" className="rounded-none bg-accent hover:bg-accent/90 text-primary-foreground px-8">
+              <a href="#contact">Request a Consultation <ArrowRight className="w-4 h-4 ml-2" /></a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-none border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <a href="tel:+15165819706">Call (516) 581 9706</a>
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -375,14 +733,24 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-24 bg-secondary">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Discuss Your Project</h2>
           <p className="text-primary/70 max-w-2xl mx-auto">
             Provide details about your property and construction needs.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-background p-8 md:p-12 border border-border shadow-sm">
+        <motion.div 
+          className="bg-background p-8 md:p-12 border border-border shadow-sm"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           {submitted ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 text-accent">
@@ -548,13 +916,13 @@ const ContactForm = () => {
                   )}
                 />
 
-                <Button type="submit" className="w-full md:w-auto px-12 py-6 rounded-none bg-primary hover:bg-primary/90 text-primary-foreground text-lg">
+                <Button type="submit" className="w-full md:w-auto px-12 py-6 rounded-none bg-primary hover:bg-primary/90 text-primary-foreground text-lg" data-testid="button-submit-form">
                   Submit Inquiry
                 </Button>
               </form>
             </Form>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -585,25 +953,54 @@ const FAQ = () => {
     {
       q: "What are the business hours?",
       a: "A public directory lists Monday through Friday from 8:00 AM to 5:00 PM. Confirm current availability directly by phone."
+    },
+    {
+      q: "What information should I prepare before calling?",
+      a: "Having the property address, a brief description of the intended project, and a general sense of the desired timeline makes the first conversation more productive. Permits, drawings, or design plans are helpful if they exist."
+    },
+    {
+      q: "Can I contact AJS during the early planning stage?",
+      a: "Yes. Early-stage conversations can help clarify what the project involves and what the next step would require. Call or use the project inquiry form to start the discussion."
+    },
+    {
+      q: "Can I discuss a residential renovation project?",
+      a: "General contracting and residential renovation work are listed in public business categories for AJS Construction Corp. Call to confirm current availability and whether the specific project is a fit."
+    },
+    {
+      q: "Does the website form send my request directly?",
+      a: "This demonstration form requires connection to AJS Construction Corp.'s preferred email or project management system before public launch. Until then, call (516) 581 9706 to reach the company directly."
     }
   ];
 
   return (
     <section id="questions" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl md:text-5xl font-serif text-primary mb-12 text-center">Frequently Asked Questions</h2>
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-border">
-              <AccordionTrigger className="text-left font-serif text-lg text-primary hover:text-accent hover:no-underline">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-primary/70 text-base leading-relaxed pb-6">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <motion.h2 
+          className="text-3xl md:text-5xl font-serif text-primary mb-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-border">
+                <AccordionTrigger className="text-left font-serif text-lg text-primary hover:text-accent hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-primary/70 text-base leading-relaxed pb-6">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
       </div>
     </section>
   );
@@ -614,12 +1011,23 @@ const Location = () => {
     <section id="location" className="border-t border-border">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="p-12 lg:p-24 bg-secondary flex flex-col justify-center">
-          <div className="mb-12">
+          <motion.div 
+            className="mb-12"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl font-serif text-primary mb-6">Location & Hours</h2>
             <div className="w-12 h-[2px] bg-accent"></div>
-          </div>
+          </motion.div>
           
-          <div className="space-y-8 mb-12">
+          <motion.div 
+            className="space-y-8 mb-12"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             <div>
               <p className="font-serif font-bold text-xl text-primary mb-2">AJS Construction Corp.</p>
               <p className="text-primary/70 flex items-center gap-2">
@@ -642,9 +1050,15 @@ const Location = () => {
                 </span>
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
             <Button asChild className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
               <a href="tel:+15165819706">Call Now</a>
             </Button>
@@ -654,7 +1068,7 @@ const Location = () => {
             <Button asChild variant="ghost" className="rounded-none text-primary hover:text-accent hover:bg-transparent">
               <a href="#contact">Discuss Your Project</a>
             </Button>
-          </div>
+          </motion.div>
         </div>
         <div className="h-[400px] lg:h-auto w-full bg-muted">
           <iframe
@@ -677,18 +1091,27 @@ const FinalCTA = () => {
     <section className="py-24 bg-primary text-primary-foreground text-center relative overflow-hidden">
       <div className="absolute inset-0 blueprint-grid opacity-10 mix-blend-overlay pointer-events-none"></div>
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-4xl md:text-6xl font-serif mb-6">Planning a Residential Project?</h2>
-        <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-          Call AJS Construction Corp. to discuss the property, intended work, and possible next step.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button asChild size="lg" className="rounded-none bg-accent hover:bg-accent/90 text-primary-foreground px-8 py-6 text-lg">
-            <a href="#contact">Discuss Your Project</a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-none border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg">
-            <a href="tel:+15165819706">Call (516) 581 9706</a>
-          </Button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-6xl font-serif mb-6">Planning a Residential Construction Project?</h2>
+          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto mb-2">
+            Speak with AJS Construction Corp. about the property, intended work, project stage, and possible next step.
+          </p>
+          <p className="text-sm text-primary-foreground/50 max-w-2xl mx-auto mb-10">
+            Have the property address and a short project description ready when calling.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild size="lg" className="rounded-none bg-accent hover:bg-accent/90 text-primary-foreground px-8 py-6 text-lg">
+              <a href="#contact">Discuss Your Project</a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-none border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg">
+              <a href="tel:+15165819706">Call (516) 581 9706</a>
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -779,8 +1202,12 @@ export default function Home() {
       <main id="main-content" className="flex-1 flex flex-col">
         <Hero />
         <Services />
+        <Planning />
         <AboutAndProcess />
+        <ProjectsWorthDiscussing />
         <Showcase />
+        <WhatToExpect />
+        <ConsultationCallout />
         <ContactForm />
         <FAQ />
         <Location />
