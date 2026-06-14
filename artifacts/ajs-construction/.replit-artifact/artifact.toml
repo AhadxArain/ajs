@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AJS Construction Corp."
+version = "1.0.0"
+id = "artifacts/ajs-construction"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24630
+
+[services.development]
+run = "pnpm --filter @workspace/ajs-construction run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ajs-construction", "run", "build" ]
+publicDir = "artifacts/ajs-construction/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24630"
+BASE_PATH = "/"
