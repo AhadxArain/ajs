@@ -188,6 +188,14 @@ const Hero = () => {
 };
 
 const Services = () => {
+  const compactServices = [
+    { num: "01", title: "General Contracting", desc: "Coordinate residential construction through organized planning, scheduling, and project execution." },
+    { num: "02", title: "Bathroom Remodeling", desc: "Plan and build a more functional bathroom with coordinated construction and finishing work." },
+    { num: "03", title: "Construction Consultation", desc: "Discuss the property, project goals, and possible next steps directly with the company." },
+    { num: "04", title: "Residential Improvements", desc: "Coordinate improvement work across multiple areas of an existing residential property." },
+    { num: "05", title: "Project Planning Support", desc: "Organize scope, conditions, and construction sequencing for an early-stage project idea." }
+  ];
+
   return (
     <section id="services" className="py-24 bg-secondary">
       <div className="container mx-auto px-4">
@@ -201,294 +209,129 @@ const Services = () => {
           <div className="w-16 h-[2px] bg-accent"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
-          {/* Service 1 - With Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+          {/* Featured Service */}
           <motion.div 
-            className="group relative overflow-hidden bg-background p-8 border border-border/50 flex flex-col h-full"
+            className="group relative overflow-hidden bg-background p-6 md:p-8 border border-border/50 flex flex-col h-full"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="h-48 mb-8 overflow-hidden relative shrink-0">
+            <div className="h-64 md:h-80 mb-8 overflow-hidden relative shrink-0">
               <img src="/src/assets/images/service-1.png" alt="New Home Construction" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-primary mb-4 flex items-center justify-between">
+            <h3 className="text-2xl font-serif font-bold text-primary mb-4 flex items-center justify-between">
               New Home Construction
-              <ArrowRight className="w-5 h-5 text-accent opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
             </h3>
-            <p className="text-primary/70 leading-relaxed text-sm mb-6 flex-grow">
-              Discuss residential home building goals, property requirements, project scope, and the next stages required to move the project forward.
+            <p className="text-primary/70 leading-relaxed text-sm mb-8 flex-grow max-w-sm">
+              Discuss property requirements, project scope, and the stages needed to move a home build forward.
             </p>
-            <div className="space-y-4 text-sm mt-auto">
-              <div>
-                <p className="font-bold text-primary mb-2">Typical considerations:</p>
-                <ul className="space-y-1 text-primary/70">
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Lot size and zoning</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Square footage goals</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Architectural style</li>
-                </ul>
-              </div>
-              <div className="pt-4 border-t border-border/50">
-                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
-                <p className="text-primary/70 italic text-xs">Timeline, general scope, location</p>
-              </div>
-              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-1-cta">
-                Start the Conversation <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
+            <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all mt-auto" data-testid="link-service-featured-cta">
+              Start the Conversation <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
 
-          {/* Service 2 */}
-          <motion.div 
-            className="bg-primary text-primary-foreground p-8 md:p-12 flex flex-col h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h3 className="text-2xl font-serif font-bold mb-4">General Contracting</h3>
-            <p className="text-primary-foreground/80 leading-relaxed text-sm mb-8 flex-grow">
-              Coordinate residential construction work through organized planning, communication, scheduling, and project execution.
-            </p>
-            <div className="space-y-4 text-sm mt-auto">
-              <div>
-                <p className="font-bold text-primary-foreground mb-2">Typical considerations:</p>
-                <ul className="space-y-1 text-primary-foreground/70">
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Multiple trades scheduling</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Material procurement</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Site management</li>
-                </ul>
-              </div>
-              <div className="pt-4 border-t border-primary-foreground/20">
-                <p className="font-medium text-primary-foreground mb-1">What to discuss on the first call:</p>
-                <p className="text-primary-foreground/70 italic text-xs">Project scale, existing conditions, budget range</p>
-              </div>
-              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-2-cta">
-                Start the Conversation <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Service 3 */}
-          <motion.div 
-            className="bg-background p-8 md:p-12 border border-border flex flex-col relative overflow-hidden h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 blueprint-grid opacity-20 transform rotate-45 translate-x-16 -translate-y-16 pointer-events-none"></div>
-            <h3 className="text-2xl font-serif font-bold text-primary mb-4 relative z-10">Bathroom Remodeling</h3>
-            <p className="text-primary/70 leading-relaxed text-sm relative z-10 mb-8 flex-grow">
-              Plan and build a more functional bathroom space through coordinated construction, fixture placement, surface work, and finishing details.
-            </p>
-            <div className="space-y-4 text-sm mt-auto relative z-10">
-              <div>
-                <p className="font-bold text-primary mb-2">Typical considerations:</p>
-                <ul className="space-y-1 text-primary/70">
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Plumbing relocation</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Custom tile work</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Fixture upgrades</li>
-                </ul>
-              </div>
-              <div className="pt-4 border-t border-border/50">
-                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
-                <p className="text-primary/70 italic text-xs">Current layout, desired changes, timeline</p>
-              </div>
-              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-3-cta">
-                Start the Conversation <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Service 4 */}
-          <motion.div 
-            className="bg-background p-8 border border-border border-l-4 border-l-accent flex flex-col h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h3 className="text-xl font-serif font-bold text-primary mb-4">Construction Consultation</h3>
-            <p className="text-primary/70 leading-relaxed text-sm mb-8 flex-grow">
-              Speak directly with the company about the property, project goals, construction considerations, and possible next steps.
-            </p>
-            <div className="space-y-4 text-sm mt-auto">
-              <div>
-                <p className="font-bold text-primary mb-2">Typical considerations:</p>
-                <ul className="space-y-1 text-primary/70">
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Feasibility of ideas</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Constructability reviews</li>
-                  <li className="flex items-start"><span className="mr-2 text-accent">-</span> Sequencing strategies</li>
-                </ul>
-              </div>
-              <div className="pt-4 border-t border-border/50">
-                <p className="font-medium text-primary mb-1">What to discuss on the first call:</p>
-                <p className="text-primary/70 italic text-xs">Property address, current planning stage, specific concerns</p>
-              </div>
-              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs mt-4 hover:gap-3 transition-all" data-testid="link-service-4-cta">
-                Start the Conversation <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
+          {/* Compact Services Rows */}
+          <div className="flex flex-col h-full justify-between gap-4">
+            {compactServices.map((service, idx) => (
+              <motion.div 
+                key={idx}
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 md:p-6 bg-background/50 border border-border/50 hover:bg-background transition-colors hover:translate-x-1 duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <div className="text-xl font-serif text-accent font-bold opacity-50 shrink-0 w-8">{service.num}</div>
+                <div className="flex-grow">
+                  <h4 className="text-lg font-serif font-bold text-primary mb-1">{service.title}</h4>
+                  <p className="text-primary/70 text-sm leading-relaxed">{service.desc}</p>
+                </div>
+                <a href="#contact" className="shrink-0 text-accent p-2 rounded-full hover:bg-accent/10 transition-colors" data-testid={`link-service-compact-${idx}`}>
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
-
-        {/* 2 NEW lighter-weight service tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div 
-            className="bg-background/50 border border-border p-6 flex flex-col h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-3">
-              <span className="text-[0.65rem] uppercase tracking-widest text-muted border border-border px-2 py-1">Discussion Category</span>
-            </div>
-            <h4 className="text-lg font-serif font-bold text-primary mb-3">Residential Improvements</h4>
-            <p className="text-sm text-primary/70 leading-relaxed">
-              Residential improvement projects may involve coordinated construction work across multiple areas. Discuss the property condition, intended changes, and project priorities to determine possible next steps.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-background/50 border border-border p-6 flex flex-col h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="mb-3">
-              <span className="text-[0.65rem] uppercase tracking-widest text-muted border border-border px-2 py-1">Discussion Category</span>
-            </div>
-            <h4 className="text-lg font-serif font-bold text-primary mb-3">Project Planning Support</h4>
-            <p className="text-sm text-primary/70 leading-relaxed">
-              Early-stage projects often benefit from an organized conversation about scope, property conditions, and construction sequencing. Contact the company to begin a focused planning discussion.
-            </p>
-          </motion.div>
-        </div>
-
       </div>
     </section>
   );
 };
 
-const Planning = () => {
-  const topics = [
-    { num: "01", title: "Property and Project Overview", desc: "Prepare the property address, current conditions, and a short explanation of what you want to build, remodel, or improve." },
-    { num: "02", title: "Goals and Priorities", desc: "Identify the main result you want from the project, the most important features, and any major concerns." },
-    { num: "03", title: "Timeline and Budget", desc: "Share your preferred timeline and an approximate budget range so the initial conversation can remain practical." },
-    { num: "04", title: "Plans and Permit Status", desc: "Mention whether drawings, sketches, architectural plans, or permit information already exist." },
+const PathToConstruction = () => {
+  const stages = [
+    { num: "01", title: "Share the Project", desc: "Property location, project type, and general goals." },
+    { num: "02", title: "Review the Scope", desc: "Existing conditions, design needs, budget expectations, and timing." },
+    { num: "03", title: "Define the Plan", desc: "Responsibilities, coordination requirements, and practical next steps." },
+    { num: "04", title: "Move Forward", desc: "Begin the agreed construction scope with organized communication." }
   ];
 
   return (
-    <section id="planning" className="py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <motion.div
-          className="mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-5">Planning a Residential Construction Project</h2>
-          <p className="text-primary/70 text-lg max-w-2xl">
-            A few basic details can make your first project conversation more focused and productive.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {topics.map((topic, idx) => (
-            <motion.div
-              key={idx}
-              className="border-t-2 border-accent pt-6 flex flex-col gap-3"
+    <section id="approach" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute right-0 top-0 w-1/2 h-full blueprint-grid opacity-20 z-0 hidden md:block"></div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          
+          {/* Left Column: Text & Process */}
+          <div className="flex flex-col">
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.08 }}
+              className="mb-12"
             >
-              <span className="text-2xl font-serif text-accent font-bold opacity-50 leading-none">{topic.num}</span>
-              <h3 className="text-lg font-serif font-bold text-primary leading-snug">{topic.title}</h3>
-              <p className="text-primary/70 text-sm leading-relaxed">{topic.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          className="mt-12 pt-10 border-t border-border flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Button asChild size="lg" className="rounded-none bg-primary hover:bg-primary/90 text-primary-foreground px-8">
-            <a href="#contact">Discuss Your Project <ArrowRight className="w-4 h-4 ml-2" /></a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-none border-primary text-primary hover:bg-secondary">
-            <a href="tel:+15165819706">Call (516) 581 9706</a>
-          </Button>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const AboutAndProcess = () => {
-  return (
-    <section id="approach" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute right-0 top-0 w-1/3 h-full blueprint-grid opacity-30 z-0"></div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          
-          {/* About */}
-          <motion.div 
-            id="about"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-serif text-primary mb-8 leading-tight">
-              Residential Construction With a Direct Approach
-            </h2>
-            <div className="prose prose-lg text-primary/80 mb-8">
-              <p>
-                AJS Construction Corp. is based in Westbury, New York. Public business listings categorize the company as a home builder, general contractor, construction consultant, and bathroom remodeling contractor.
+              <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6 leading-tight">
+                A Clearer Path From Idea to Construction
+              </h2>
+              <p className="text-primary/70 text-lg mb-8 max-w-lg">
+                Every residential project begins with a clear understanding of the property, priorities, scope, and next step.
               </p>
-            </div>
-            <div className="flex items-start gap-4 p-6 bg-secondary/50 border-l-2 border-accent">
-              <MapPin className="w-6 h-6 text-accent shrink-0 mt-1" />
-              <div>
-                <p className="font-medium text-primary">Headquarters</p>
-                <p className="text-primary/70">141 E Cabot Ln<br/>Westbury, NY 11590</p>
+              
+              <div className="p-6 bg-secondary border-l-2 border-accent">
+                <p className="text-primary/80 text-sm mb-4">
+                  AJS Construction Corp. is based in Westbury, New York and is publicly categorized as a home builder, general contractor, construction consultant, and bathroom remodeling contractor.
+                </p>
+                <p className="text-primary/90 text-sm font-medium flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-accent" /> 141 E Cabot Ln, Westbury, NY 11590
+                </p>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Process */}
-          <motion.div 
-            id="process"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-8 h-[1px] bg-accent"></div>
-              <span className="text-sm font-medium tracking-widest uppercase text-muted">Approach</span>
-            </div>
-            
+            {/* Stages */}
             <div className="space-y-8">
-              {[
-                { num: "01", title: "Initial Project Conversation", desc: "Discuss the property address, intended project type, general goals, and current planning stage to determine whether AJS Construction Corp. is the right fit." },
-                { num: "02", title: "Property and Scope Review", desc: "Review the physical site, existing conditions, general design direction, and what the construction work is likely to involve." },
-                { num: "03", title: "Planning and Coordination", desc: "Clarify the proposed scope of work, discuss scheduling considerations, define responsibilities, and establish a clear set of next steps." },
-                { num: "04", title: "Construction Execution", desc: "Move through the approved construction scope with organized site communication, coordination between trades, and progress documentation." },
-                { num: "05", title: "Project Review and Completion", desc: "Review the completed work against the agreed scope, address any outstanding items, and confirm the project is ready to close." }
-              ].map((step, idx) => (
-                <div key={idx} className="flex gap-6">
-                  <div className="text-3xl font-serif text-accent font-bold opacity-50 pt-1">{step.num}</div>
-                  <div className="pb-8 border-b border-border/50 flex-1">
-                    <h4 className="text-xl font-serif font-bold text-primary mb-2">{step.title}</h4>
-                    <p className="text-primary/70 text-sm">{step.desc}</p>
+              {stages.map((stage, idx) => (
+                <motion.div 
+                  key={idx} 
+                  className="flex gap-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <div className="text-4xl font-serif text-accent font-bold opacity-50 pt-1 leading-none">{stage.num}</div>
+                  <div className="pb-6 border-b border-border/50 flex-1">
+                    <h4 className="text-xl font-serif font-bold text-primary mb-2">{stage.title}</h4>
+                    <p className="text-primary/70 text-sm">{stage.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
+          </div>
+
+          {/* Right Column: Image */}
+          <motion.div 
+            className="hidden md:block relative h-full min-h-[600px] w-full"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute inset-0 bg-secondary/20 translate-x-4 translate-y-4"></div>
+            <img 
+              src="/src/assets/images/hero.png" 
+              alt="Construction progress" 
+              className="absolute inset-0 w-full h-full object-cover grayscale-[20%] contrast-125"
+            />
           </motion.div>
 
         </div>
@@ -496,13 +339,14 @@ const AboutAndProcess = () => {
     </section>
   );
 };
+
 
 const ProjectsWorthDiscussing = () => {
   const projects = [
-    { title: "Building a New Home", desc: "Property owners considering new residential construction can discuss the site, intended home size, general design direction, and the stages required to move the project toward active planning." },
-    { title: "Managing a Residential Renovation", desc: "Renovation projects involving multiple construction areas may benefit from coordinated general contracting. Discuss the property, intended scope, and construction phasing." },
-    { title: "Updating a Bathroom", desc: "Bathroom remodeling projects can range from targeted fixture updates to full spatial redesigns. Discuss the current layout, desired changes, and available timeline." },
-    { title: "Reviewing an Early Construction Idea", desc: "Early-stage ideas benefit from a direct conversation about feasibility, scope, and possible next steps before committing to a full project plan." }
+    { title: "Building a New Home", desc: "Discuss the site, intended home size, general design direction, and the stages required to move the project toward active planning.", img: "/src/assets/images/showcase-1.png", span: "lg:col-span-1 lg:row-span-3" },
+    { title: "Managing a Residential Renovation", desc: "Renovation projects involving multiple construction areas may benefit from coordinated general contracting.", img: "/src/assets/images/showcase-4.png", span: "lg:col-span-1 lg:row-span-1" },
+    { title: "Updating a Bathroom", desc: "Bathroom remodeling projects can range from targeted fixture updates to full spatial redesigns.", img: "/src/assets/images/showcase-3.png", span: "lg:col-span-1 lg:row-span-1" },
+    { title: "Reviewing an Early Construction Idea", desc: "Early-stage ideas benefit from a direct conversation about feasibility, scope, and possible next steps.", img: "/src/assets/images/showcase-2.png", span: "lg:col-span-1 lg:row-span-1" }
   ];
 
   return (
@@ -518,25 +362,33 @@ const ProjectsWorthDiscussing = () => {
           <p className="text-primary-foreground/70 text-lg">Exact scope and availability must be confirmed directly with AJS Construction Corp.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-3 gap-4 md:gap-6 mb-8">
           {projects.map((project, idx) => (
             <motion.div 
               key={idx} 
-              className="bg-primary-foreground/5 p-8 border border-primary-foreground/10 flex flex-col h-full hover:bg-primary-foreground/10 transition-colors"
+              className={`group relative overflow-hidden bg-primary-foreground/5 min-h-[300px] ${project.span || ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <div className="text-4xl font-serif text-accent mb-6 font-bold">{(idx + 1).toString().padStart(2, '0')}</div>
-              <h3 className="text-xl font-serif font-bold mb-4">{project.title}</h3>
-              <p className="text-primary-foreground/70 text-sm leading-relaxed mb-8 flex-grow">{project.desc}</p>
-              <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all mt-auto" data-testid={`link-project-discuss-${idx}`}>
-                Discuss This Project <ArrowRight className="w-4 h-4" />
-              </a>
+              <img src={project.img} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent group-hover:from-primary/80 transition-colors duration-500"></div>
+              
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <h3 className="text-2xl font-serif font-bold mb-2 text-white">{project.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-sm">{project.desc}</p>
+                <a href="#contact" className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all" data-testid={`link-project-discuss-${idx}`}>
+                  Discuss This Project <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
+        
+        <p className="text-xs text-primary-foreground/50 italic border-l border-primary-foreground/20 pl-3">
+          Images are representative design placeholders and do not show confirmed AJS Construction Corp. projects.
+        </p>
       </div>
     </section>
   );
@@ -1142,8 +994,7 @@ export default function Home() {
       <main id="main-content" className="flex-1 flex flex-col">
         <Hero />
         <Services />
-        <Planning />
-        <AboutAndProcess />
+        <PathToConstruction />
         <ProjectsWorthDiscussing />
         <Showcase />
         <WhatToExpect />
