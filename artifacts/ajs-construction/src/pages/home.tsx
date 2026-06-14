@@ -657,15 +657,14 @@ const Location = () => {
           </div>
         </div>
         <div className="h-[400px] lg:h-auto w-full bg-muted">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3023.16723223126!2d-73.5701830845943!3d40.7516390793276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2874dc6f5787b%3A0xc07ce6f443b733b8!2s141%20E%20Cabot%20Ln%2C%20Westbury%2C%20NY%2011590!5e0!3m2!1sen!2sus!4v1689269473821!5m2!1sen!2sus" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={false} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Google Maps Location for AJS Construction Corp."
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-73.5790%2C40.7476%2C-73.5614%2C40.7556&layer=mapnik&marker=40.7516%2C-73.5702"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            title="Map location for AJS Construction Corp. at 141 E Cabot Ln, Westbury, NY 11590"
           ></iframe>
         </div>
       </div>
