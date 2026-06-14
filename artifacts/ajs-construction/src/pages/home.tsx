@@ -31,14 +31,20 @@ const BrandMark = () => (
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Lock body scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => { document.body.style.overflow = "unset"; };
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setIsOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  const close = () => setIsOpen(false);
 
   const navLinks = [
     { name: "Services", href: "#services" },
@@ -49,85 +55,126 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50 h-[60px] md:h-20 transition-all duration-300" data-testid="layout-header">
-      <div className="container mx-auto px-4 h-full flex items-center justify-between">
-        <Link href="/" className="z-50" data-testid="link-home-logo">
-          <BrandMark />
-        </Link>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border/50 h-[60px] md:h-20 transition-all duration-300" data-testid="layout-header">
+        <div className="container mx-auto px-4 h-full flex items-center justify-between">
+          <Link href="/" className="z-50 shrink-0" data-testid="link-home-logo">
+            <BrandMark />
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
-          <ul className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a href={link.href} className="text-sm font-medium text-primary/80 hover:text-accent transition-colors" data-testid={`link-nav-${link.name.toLowerCase()}`}>
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-4 border-l border-border pl-6">
-            <a href="tel:+15165819706" className="text-sm font-medium flex items-center gap-2 text-primary hover:text-accent transition-colors" data-testid="link-phone-header">
-              <Phone className="w-4 h-4" />
-              <span>(516) 581 9706</span>
-            </a>
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-6" data-testid="button-discuss-project-header">
-              <a href="#contact">Discuss Your Project</a>
-            </Button>
-          </div>
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
+            <ul className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm font-medium text-primary/80 hover:text-accent transition-colors" data-testid={`link-nav-${link.name.toLowerCase()}`}>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center gap-4 border-l border-border pl-6">
+              <a href="tel:+15165819706" className="text-sm font-medium flex items-center gap-2 text-primary hover:text-accent transition-colors" data-testid="link-phone-header">
+                <Phone className="w-4 h-4" />
+                <span>(516) 581 9706</span>
+              </a>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-6" data-testid="button-discuss-project-header">
+                <a href="#contact">Discuss Your Project</a>
+              </Button>
+            </div>
+          </nav>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden z-50 p-2 text-primary"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          data-testid="button-mobile-menu-toggle"
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+          {/* Mobile Toggle — aria-label for accessibility */}
+          <button
+            className="md:hidden p-3 -mr-1 text-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            data-testid="button-mobile-menu-toggle"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </header>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
+      {/* Mobile Menu — rendered OUTSIDE <header> to avoid backdrop-filter containing block */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop — tap outside to close */}
             <motion.div
+              className="fixed inset-0 z-[55] md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={close}
+              aria-hidden="true"
+            />
+            <motion.nav
               id="mobile-menu"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 top-[60px] bg-background flex flex-col p-6 z-40"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "tween", duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed top-0 right-0 bottom-0 w-[min(320px,100vw)] bg-background border-l border-border z-[60] flex flex-col md:hidden"
             >
-              <ul className="flex flex-col gap-6 text-xl font-serif">
-                {navLinks.map((link) => (
-                  <li key={link.name}>
-                    <a 
-                      href={link.href} 
-                      className="block py-2 text-primary hover:text-accent"
-                      onClick={() => setIsOpen(false)}
+              {/* Menu header row */}
+              <div className="flex items-center justify-between px-6 h-[60px] border-b border-border shrink-0">
+                <BrandMark />
+                <button
+                  onClick={close}
+                  className="p-2 text-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label="Close navigation menu"
+                  data-testid="button-mobile-menu-close"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Nav links */}
+              <ul className="flex flex-col px-6 pt-8 gap-2 flex-1">
+                {navLinks.map((link, i) => (
+                  <motion.li
+                    key={link.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05 }}
+                  >
+                    <a
+                      href={link.href}
+                      className="block py-3 text-2xl font-serif text-primary hover:text-accent transition-colors border-b border-border/40"
+                      onClick={close}
+                      data-testid={`link-mobile-nav-${link.name.toLowerCase()}`}
                     >
                       {link.name}
                     </a>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-              <div className="mt-auto pb-[100px] flex flex-col gap-4">
-                <a 
-                  href="tel:+15165819706" 
-                  className="flex items-center justify-between p-4 border border-border text-primary"
+
+              {/* Bottom actions */}
+              <div className="px-6 pb-[max(24px,env(safe-area-inset-bottom))] pt-6 flex flex-col gap-3 border-t border-border shrink-0">
+                <a
+                  href="tel:+15165819706"
+                  className="flex items-center justify-between p-4 border border-border text-primary min-h-[52px]"
+                  data-testid="link-mobile-phone"
                 >
                   <span className="font-medium">Call Now</span>
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-5 h-5 text-accent" />
                 </a>
-                <Button asChild className="w-full py-6 text-lg rounded-none bg-primary text-primary-foreground">
-                  <a href="#contact" onClick={() => setIsOpen(false)}>Discuss Your Project</a>
+                <Button asChild className="w-full py-3 text-base rounded-none bg-primary text-primary-foreground min-h-[52px]">
+                  <a href="#contact" onClick={close} data-testid="button-mobile-discuss">Discuss Your Project</a>
                 </Button>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </header>
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -143,14 +190,14 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-[1px] bg-accent"></div>
-              <span className="text-sm font-medium tracking-widest uppercase text-muted">Residential Construction in Westbury, New York</span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="w-6 h-[1px] bg-accent shrink-0"></div>
+              <span className="text-xs sm:text-sm font-medium tracking-wider sm:tracking-widest uppercase text-muted">Residential Construction in Westbury, New York</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-serif text-primary leading-[1.1] tracking-tight">
+            <h1 className="text-[clamp(2.25rem,8vw,4.5rem)] font-serif text-primary leading-[1.1] tracking-tight">
               Build With a Clearer Plan.
             </h1>
-            <p className="text-lg text-primary/80 max-w-md leading-relaxed">
+            <p className="text-base md:text-lg text-primary/80 max-w-md leading-relaxed">
               AJS Construction Corp. provides residential building, general contracting, remodeling, and construction consultation services from Westbury, New York.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
@@ -166,7 +213,7 @@ const Hero = () => {
             </p>
           </motion.div>
           <motion.div 
-            className="lg:col-span-7 relative h-[400px] md:h-[600px] w-full"
+            className="lg:col-span-7 relative h-[280px] sm:h-[380px] md:h-[520px] lg:h-[600px] w-full"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -197,7 +244,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-secondary">
+    <section id="services" className="py-16 md:py-24 bg-secondary">
       <div className="container mx-auto px-4">
         <motion.div 
           className="max-w-3xl mb-16"
@@ -205,7 +252,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-primary mb-6">Structured Services for Residential Projects</h2>
+          <h2 className="text-[clamp(1.75rem,5vw,3rem)] font-serif text-primary mb-6">Structured Services for Residential Projects</h2>
           <div className="w-16 h-[2px] bg-accent"></div>
         </motion.div>
 
@@ -268,7 +315,7 @@ const PathToConstruction = () => {
   ];
 
   return (
-    <section id="approach" className="py-24 bg-background relative overflow-hidden">
+    <section id="approach" className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="absolute right-0 top-0 w-1/2 h-full blueprint-grid opacity-20 z-0 hidden md:block"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -350,7 +397,7 @@ const ProjectsWorthDiscussing = () => {
   ];
 
   return (
-    <section id="project-types" className="py-24 bg-primary text-primary-foreground">
+    <section id="project-types" className="py-16 md:py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         <motion.div 
           className="mb-16"
@@ -405,7 +452,7 @@ const Showcase = () => {
   ];
 
   return (
-    <section id="work" className="py-24 bg-primary text-primary-foreground">
+    <section id="work" className="py-16 md:py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         <motion.div 
           className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8"
@@ -456,7 +503,7 @@ const WhatToExpect = () => {
   ];
 
   return (
-    <section id="what-to-expect" className="py-24 bg-secondary">
+    <section id="what-to-expect" className="py-16 md:py-24 bg-secondary">
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div 
           className="text-center mb-16"
@@ -523,7 +570,7 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contact" className="py-24 bg-secondary">
+    <section id="contact" className="py-16 md:py-24 bg-secondary">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div 
           className="text-center mb-16"
@@ -568,7 +615,7 @@ const ContactForm = () => {
                       <FormItem>
                         <FormLabel>Full Name *</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Doe" className="rounded-none border-border focus-visible:ring-accent" {...field} />
+                          <Input placeholder="John Doe" className="rounded-none border-border focus-visible:ring-accent text-[16px]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -581,7 +628,7 @@ const ContactForm = () => {
                       <FormItem>
                         <FormLabel>Phone Number *</FormLabel>
                         <FormControl>
-                          <Input placeholder="(555) 123-4567" className="rounded-none border-border focus-visible:ring-accent" {...field} />
+                          <Input placeholder="(555) 123-4567" className="rounded-none border-border focus-visible:ring-accent text-[16px]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -597,7 +644,7 @@ const ContactForm = () => {
                       <FormItem>
                         <FormLabel>Email Address *</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="john@example.com" className="rounded-none border-border focus-visible:ring-accent" {...field} />
+                          <Input type="email" placeholder="john@example.com" className="rounded-none border-border focus-visible:ring-accent text-[16px]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -610,7 +657,7 @@ const ContactForm = () => {
                       <FormItem>
                         <FormLabel>Project Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="123 Main St, City, NY" className="rounded-none border-border focus-visible:ring-accent" {...field} />
+                          <Input placeholder="123 Main St, City, NY" className="rounded-none border-border focus-visible:ring-accent text-[16px]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -627,7 +674,7 @@ const ContactForm = () => {
                         <FormLabel>Project Type *</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="rounded-none border-border focus:ring-accent">
+                            <SelectTrigger className="rounded-none border-border focus:ring-accent text-[16px]">
                               <SelectValue placeholder="Select a project type" />
                             </SelectTrigger>
                           </FormControl>
@@ -651,7 +698,7 @@ const ContactForm = () => {
                       <FormItem>
                         <FormLabel>Desired Timeline</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g., Next 3 months, ASAP" className="rounded-none border-border focus-visible:ring-accent" {...field} />
+                          <Input placeholder="e.g., Next 3 months, ASAP" className="rounded-none border-border focus-visible:ring-accent text-[16px]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -668,7 +715,7 @@ const ContactForm = () => {
                       <FormControl>
                         <Textarea 
                           placeholder="Tell us about the scope of your project..." 
-                          className="rounded-none border-border focus-visible:ring-accent min-h-[120px]" 
+                          className="rounded-none border-border focus-visible:ring-accent min-h-[120px] text-[16px]" 
                           {...field} 
                         />
                       </FormControl>
@@ -765,10 +812,10 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="questions" className="py-24 bg-background">
+    <section id="questions" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.h2 
-          className="text-3xl md:text-5xl font-serif text-primary mb-12 text-center"
+          className="text-[clamp(1.75rem,5vw,3rem)] font-serif text-primary mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -880,7 +927,7 @@ const Location = () => {
 
 const FinalCTA = () => {
   return (
-    <section className="py-24 bg-primary text-primary-foreground text-center relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-primary text-primary-foreground text-center relative overflow-hidden">
       <div className="absolute inset-0 blueprint-grid opacity-10 mix-blend-overlay pointer-events-none"></div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

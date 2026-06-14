@@ -1,0 +1,299 @@
+Inspect the complete existing website and fix the mobile navigation and responsiveness directly inside the current project.
+
+The hamburger menu is broken on smaller screens, and the overall responsive execution does not yet feel premium or professionally designed.
+
+Do not redesign the website.
+
+Preserve the existing desktop design, branding, typography, colors, content, animations, sections, and modular file structure.
+
+Your task is to repair the mobile navigation and refine every responsive layout so the website feels intentionally designed for phones, tablets, laptops, and large desktop screens.
+
+MOBILE MENU REPAIR
+
+Inspect the complete header HTML, CSS, JavaScript, section loader, and global scripts.
+
+Determine the actual cause of the broken hamburger menu.
+
+Check for:
+
+1. JavaScript running before the header markup loads
+
+2. Incorrect query selectors
+
+3. Duplicate event listeners
+
+4. Missing menu button attributes
+
+5. Incorrect element identifiers
+
+6. Conflicting display rules
+
+7. Incorrect z index values
+
+8. Menu positioned outside the viewport
+
+9. Overflow rules hiding the menu
+
+10. The menu button being covered by another element
+
+11. Body scroll locking not being restored
+
+12. Animation classes leaving the menu invisible
+
+13. Desktop navigation styles overriding mobile styles
+
+14. Header scripts initializing more than once
+
+15. Section loading preventing header initialization
+
+The hamburger menu must:
+
+1. Open reliably on the first tap
+
+2. Close reliably on the next tap
+
+3. Display all navigation links
+
+4. Remain above all page content
+
+5. Close after a navigation link is selected
+
+6. Close when the Escape key is pressed
+
+7. Close when the user taps outside the menu
+
+8. Prevent background scrolling while open
+
+9. Restore background scrolling when closed
+
+10. Update aria expanded correctly
+
+11. Use an accessible button label
+
+12. Keep keyboard focus usable
+
+13. Avoid trapping users inside the menu
+
+14. Work after resizing between mobile and desktop widths
+
+15. Never remain stuck open or closed
+
+Use a clean mobile navigation animation.
+
+Do not use a slow or overcomplicated transition.
+
+Ensure the menu is completely visible at 320 pixels.
+
+RESPONSIVE REFINEMENT
+
+Inspect every section of the website, not only the header.
+
+The mobile layout must feel intentionally designed rather than compressed from desktop.
+
+Test and refine the website at:
+
+1. 320 pixels
+
+2. 360 pixels
+
+3. 375 pixels
+
+4. 390 pixels
+
+5. 412 pixels
+
+6. 430 pixels
+
+7. 600 pixels
+
+8. 768 pixels
+
+9. 820 pixels
+
+10. 1024 pixels
+
+11. 1280 pixels
+
+12. 1440 pixels
+
+13. 1920 pixels
+
+Correct all issues involving:
+
+1. Horizontal overflow
+
+2. Text clipping
+
+3. Oversized headings
+
+4. Tiny body text
+
+5. Buttons leaving the viewport
+
+6. Images cropping badly
+
+7. Cards becoming excessively tall
+
+8. Sections containing large empty areas
+
+9. Content becoming too dense
+
+10. Grids collapsing awkwardly
+
+11. Tablet layouts looking unfinished
+
+12. Fixed elements covering content
+
+13. Forms wider than the screen
+
+14. Inputs causing browser zoom
+
+15. Navigation overlapping the hero
+
+16. Footer columns clipping
+
+17. Animation transforms moving elements outside the viewport
+
+18. Uneven section spacing
+
+19. Calls to action becoming difficult to reach
+
+20. Touch controls being too small
+
+MOBILE QUALITY REQUIREMENTS
+
+At mobile sizes:
+
+1. Keep the logo, hamburger button, and call action properly aligned
+
+2. Keep the header compact without making controls difficult to tap
+
+3. Make all touch targets at least 44 pixels tall and wide where practical
+
+4. Use fluid heading sizes with clamp
+
+5. Keep body text readable
+
+6. Stack content in a logical order
+
+7. Keep important calls to action visible early
+
+8. Use full width buttons only when they improve usability
+
+9. Prevent images from creating excessive page height
+
+10. Keep section padding balanced
+
+11. Avoid large empty gaps
+
+12. Ensure the fixed mobile action bar does not cover content
+
+13. Add safe bottom spacing above the footer when a mobile action bar exists
+
+14. Respect mobile safe area insets
+
+15. Ensure all content remains visible when JavaScript fails
+
+TABLET QUALITY REQUIREMENTS
+
+At tablet widths:
+
+1. Do not use a stretched mobile layout
+
+2. Do not force cramped desktop columns
+
+3. Use balanced two column layouts when appropriate
+
+4. Keep headings and images proportionate
+
+5. Ensure navigation changes at a sensible breakpoint
+
+6. Keep forms readable and well spaced
+
+7. Avoid excessive unused space
+
+DESKTOP PROTECTION
+
+Do not damage the current desktop design while fixing mobile behavior.
+
+Confirm that:
+
+1. Desktop navigation remains visible at the correct width
+
+2. The hamburger menu remains hidden on desktop
+
+3. The content container remains balanced
+
+4. Images retain correct proportions
+
+5. Large sections use the available width professionally
+
+6. No mobile rules leak into desktop layouts
+
+TECHNICAL RULES
+
+Use mobile first responsive CSS where practical.
+
+Use flexible grids, percentages, minmax, clamp, aspect ratio, and object fit.
+
+Avoid random fixed widths and fixed heights.
+
+Do not add inline CSS.
+
+Do not add inline JavaScript.
+
+Do not merge modular files into index.html.
+
+Do not add a heavy navigation library.
+
+Do not remove working animations.
+
+Do not hide responsiveness problems with overflow hidden on the page body.
+
+FINAL TESTING
+
+After making the changes:
+
+1. Run the complete website
+
+2. Test the hamburger menu repeatedly
+
+3. Test opening and closing it quickly
+
+4. Test every navigation link
+
+5. Test the Escape key
+
+6. Test outside click behavior
+
+7. Test resizing from mobile to desktop and back
+
+8. Test scrolling while the menu is open
+
+9. Test the browser console
+
+10. Test every required viewport width
+
+11. Confirm no horizontal overflow exists
+
+12. Confirm no section is clipped
+
+13. Confirm no content is hidden by fixed controls
+
+14. Confirm the footer remains fully visible
+
+15. Confirm the website feels polished on mobile, tablet, and desktop
+
+At the end, report only:
+
+1. Root cause of the hamburger failure
+
+2. Files changed
+
+3. Mobile navigation fixes
+
+4. Responsive improvements
+
+5. Viewport widths tested
+
+6. Console status
