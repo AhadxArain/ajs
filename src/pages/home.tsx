@@ -220,7 +220,7 @@ const Hero = () => {
           >
             <div className="absolute inset-0 bg-secondary/20 -translate-x-4 translate-y-4"></div>
             <img 
-              src="/src/assets/images/hero.png" 
+              src="/assets/images/hero.png" 
               alt="Modern new home under construction" 
               className="absolute inset-0 w-full h-full object-cover grayscale-[20%] contrast-125"
             />
@@ -265,7 +265,7 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <div className="h-64 md:h-80 mb-8 overflow-hidden relative shrink-0">
-              <img src="/src/assets/images/service-1.png" alt="New Home Construction" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <img src="/assets/images/service-1.png" alt="New Home Construction" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-primary mb-4 flex items-center justify-between">
               New Home Construction
@@ -375,7 +375,7 @@ const PathToConstruction = () => {
           >
             <div className="absolute inset-0 bg-secondary/20 translate-x-4 translate-y-4"></div>
             <img 
-              src="/src/assets/images/hero.png" 
+              src="/assets/images/hero.png" 
               alt="Construction progress" 
               className="absolute inset-0 w-full h-full object-cover grayscale-[20%] contrast-125"
             />
@@ -390,10 +390,10 @@ const PathToConstruction = () => {
 
 const ProjectsWorthDiscussing = () => {
   const projects = [
-    { title: "Building a New Home", desc: "Discuss the site, intended home size, general design direction, and the stages required to move the project toward active planning.", img: "/src/assets/images/showcase-1.png", span: "lg:col-span-1 lg:row-span-3" },
-    { title: "Managing a Residential Renovation", desc: "Renovation projects involving multiple construction areas may benefit from coordinated general contracting.", img: "/src/assets/images/showcase-4.png", span: "lg:col-span-1 lg:row-span-1" },
-    { title: "Updating a Bathroom", desc: "Bathroom remodeling projects can range from targeted fixture updates to full spatial redesigns.", img: "/src/assets/images/showcase-3.png", span: "lg:col-span-1 lg:row-span-1" },
-    { title: "Reviewing an Early Construction Idea", desc: "Early-stage ideas benefit from a direct conversation about feasibility, scope, and possible next steps.", img: "/src/assets/images/showcase-2.png", span: "lg:col-span-1 lg:row-span-1" }
+    { title: "Building a New Home", desc: "Discuss the site, intended home size, general design direction, and the stages required to move the project toward active planning.", img: "/assets/images/showcase-1.png", span: "lg:col-span-1 lg:row-span-3" },
+    { title: "Managing a Residential Renovation", desc: "Renovation projects involving multiple construction areas may benefit from coordinated general contracting.", img: "/assets/images/showcase-4.png", span: "lg:col-span-1 lg:row-span-1" },
+    { title: "Updating a Bathroom", desc: "Bathroom remodeling projects can range from targeted fixture updates to full spatial redesigns.", img: "/assets/images/showcase-3.png", span: "lg:col-span-1 lg:row-span-1" },
+    { title: "Reviewing an Early Construction Idea", desc: "Early-stage ideas benefit from a direct conversation about feasibility, scope, and possible next steps.", img: "/assets/images/showcase-2.png", span: "lg:col-span-1 lg:row-span-1" }
   ];
 
   return (
@@ -443,12 +443,12 @@ const ProjectsWorthDiscussing = () => {
 
 const Showcase = () => {
   const images = [
-    { src: "/src/assets/images/showcase-1.png", alt: "New residential construction / modern framing" },
-    { src: "/src/assets/images/showcase-2.png", alt: "Structural framing / construction in progress" },
-    { src: "/src/assets/images/showcase-3.png", alt: "Modern bathroom remodel" },
-    { src: "/src/assets/images/showcase-4.png", alt: "Interior construction detail" },
-    { src: "/src/assets/images/showcase-5.png", alt: "Residential exterior work" },
-    { src: "/src/assets/images/showcase-6.png", alt: "Finished living space" },
+    { src: "/assets/images/showcase-1.png", alt: "New residential construction / modern framing" },
+    { src: "/assets/images/showcase-2.png", alt: "Structural framing / construction in progress" },
+    { src: "/assets/images/showcase-3.png", alt: "Modern bathroom remodel" },
+    { src: "/assets/images/showcase-4.png", alt: "Interior construction detail" },
+    { src: "/assets/images/showcase-5.png", alt: "Residential exterior work" },
+    { src: "/assets/images/showcase-6.png", alt: "Finished living space" },
   ];
 
   return (
